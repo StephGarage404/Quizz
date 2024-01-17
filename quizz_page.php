@@ -1,21 +1,29 @@
 <?php 
 // QUESTIONS
 require_once "./settings/connexion.php";
-//Je demmande la question 1
-$idQuestion = 1;
+
+
+/*  IL FAUT ECRIRE UNE REQUETE QUI DONNE LA LISTE DES QUESTIONS AUXQUELLES L UTILISATEUR N A PAS ENCORE REPONDU */
 
 $preparedRequest = $connexion->prepare(
-    "SELECT * FROM `question` WHERE id = ? ORDER BY RAND() LIMIT 1"
+    "SELECT Q.*
+    FROM `question` as Q
+    left join user_question as UQ on UQ.question_id = Q.id
+                                    and uq.user_id = ?
+    where uq.id is null
+    ORDER BY RAND() LIMIT 1"/* ENSUITE, IL FAUT EN CHOISIR UNE AU HASARD  */
 );
 
-$preparedRequest->execute(array($idQuestion));
+$preparedRequest->execute(array(id utilisateur));
 
 $questions = $preparedRequest->fetch(PDO::FETCH_ASSOC);
-?>
+
+/* S IL N Y A PLUS DE QUESTION, REDIRECTION SUR PAGE DES SCORES */
 
 
-<!-- REPONSES -->
-<?php 
+
+// REPONSES 
+/* ENSUITE, IL FAUT RECUPERER LA LISTE DES REPONSES POSSIBLES DE CETTE QUESTION  */
 //Je séléctionne les réponses de la question donnée
     require_once "./settings/connexion.php";
     $preparedRequest = $connexion->prepare("SELECT * FROM answer WHERE question_id = ?"
@@ -26,20 +34,13 @@ $preparedRequest->execute(array($questions["id"]));
 $answer = $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
 
 
-/*  IL FAUT ECRIRE UNE REQUETE QUI DONNE LA LISTE DES QUESTIONS AUXQUELLES L UTILISATEUR N A PAS ENCORE REPONDU */
-
-/* ENSUITE, IL FAUT EN CHOISIR UNE AU HASARD  */
-
-/* ENSUITE, IL FAUT RECUPERER LA LISTE DES REPONSES POSSIBLES DE CETTE QUESTION  */
 
 
-/* ENSUITE, IL FAUT AFFICHER L IMAGE DE LA QUESTION ET LES REPONSES POSSIBLES  */
+
+/* ENSUITE, IL FAUT ACTUALISER LA PAGE POUR CHARGER UNE AUTRE QUESTION  */
 
 
-/* ENSUITE, QUAND ON CLIQUE SUR UNE REPONSE IL FAUT VERIFIER SI ELLE EST JUSTE OU PAS ET ENREGISTRER LE CHOIX DANS LA BASE DE DONNEES  */
 
-
-/* ENSUITE, IL FAUT ACTUALISER LA PAGE POUR CHARGER UNE AUTRE QUESTION, S IL N Y A PLUS DE QUESTION, REDIRECTION SUR PAGE DES SCORES  */
 ?> 
 
 
@@ -61,6 +62,7 @@ $answer = $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
     <a href="./index.php">Accueil</a>
 
 
+    <!-- ENSUITE, IL FAUT AFFICHER L IMAGE DE LA QUESTION ET LES REPONSES POSSIBLES  -->
     <div class="container">
         <div class="row">
             
@@ -69,11 +71,15 @@ $answer = $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
                     
             </div>
 
+
             <div class="col">
-                <div class="question"><?=$questions["questions"]?></div>
+                <div class="question" style="img source ...<?=$questions["code image"]?>"><?=$questions["questions"]?></div>
                 <?php
                 //foreach de $answer
                 ?>
+                
+            <!--ENSUITE, QUAND ON CLIQUE SUR UNE REPONSE IL FAUT VERIFIER SI ELLE EST JUSTE OU PAS ET ENREGISTRER LE CHOIX DANS LA BASE DE DONNEES  -->
+
                 <div class="reponse"></div>
                 <div class="reponse"></div>
                 <div class="reponse"></div>
