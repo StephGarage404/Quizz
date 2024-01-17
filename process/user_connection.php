@@ -6,9 +6,9 @@ if (!empty($_POST['username']))
     require_once '../settings/connexion.php'; 
 
     //Prépare la requête SQL qui récupèrera la ligne de la table USER pour laquelle le pseudo est égal à la valeur saisie par l'utilisateur ($_POST['userName'])
-    $SQLuniqueUser = $connexion->prepare("SELECT * FROM user WHERE pseudo = '" . $_POST['username'] . "'");
+    $SQLuniqueUser = $connexion->prepare("SELECT * FROM user WHERE pseudo = ?");
     //  Exécution de la requête sur le serveur SQL
-    $SQLuniqueUser->execute();
+    $SQLuniqueUser->execute([$_POST['username']]);
     //  Récupération du résultat de la requête SQL (la ligne de la table USER correspondant au pseudo saisi)
     $uniqueUser = $SQLuniqueUser->fetch(PDO::FETCH_ASSOC);
 
@@ -36,6 +36,6 @@ if (!empty($_POST['username']))
         $_SESSION['user'] = $_POST['username'];
 
         //  Redirection vers la page du profil de l'utilisateur qui vient d'être créé
-        header("Location: ../profil_page.php");
+        header("location: ../profil_page.php");
     }
 }
