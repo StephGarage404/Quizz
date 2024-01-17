@@ -1,14 +1,30 @@
 <?php 
-
+// QUESTIONS
 require_once "./settings/connexion.php";
+//Je demmande la question 1
+$idQuestion = 1;
 
 $preparedRequest = $connexion->prepare(
-    "SELECT * FROM `question`"
+    "SELECT * FROM `question` WHERE id = ? ORDER BY RAND() LIMIT 1"
 );
 
-$preparedRequest->execute();
+$preparedRequest->execute(array($idQuestion));
 
-$questions = $preparedRequest->fetch();
+$questions = $preparedRequest->fetch(PDO::FETCH_ASSOC);
+?>
+
+
+<!-- REPONSES -->
+<?php 
+//Je séléctionne les réponses de la question donnée
+    require_once "./settings/connexion.php";
+    $preparedRequest = $connexion->prepare("SELECT * FROM answer WHERE question_id = ?"
+    );
+
+$preparedRequest->execute(array($questions["id"]));
+
+$answer = $preparedRequest->fetchAll(PDO::FETCH_ASSOC);
+
 
 /*  IL FAUT ECRIRE UNE REQUETE QUI DONNE LA LISTE DES QUESTIONS AUXQUELLES L UTILISATEUR N A PAS ENCORE REPONDU */
 
@@ -24,7 +40,7 @@ $questions = $preparedRequest->fetch();
 
 
 /* ENSUITE, IL FAUT ACTUALISER LA PAGE POUR CHARGER UNE AUTRE QUESTION, S IL N Y A PLUS DE QUESTION, REDIRECTION SUR PAGE DES SCORES  */
-?>
+?> 
 
 
 
@@ -38,21 +54,26 @@ $questions = $preparedRequest->fetch();
     <title>QUIZZ</title>
 </head>
 <body>
-             
-    <h1>PAGE QUIZZ</h1>
+   
+ <div class="anim">
+    <h1 class="TitreQuizz">PAGE QUIZZ</h1>
+</div>
     <a href="./index.php">Accueil</a>
 
 
     <div class="container">
         <div class="row">
-            <button><a href="./index.php">QUIZZ</a></button>
+            
 
             <div class="col imageVoiture">
                     
             </div>
 
             <div class="col">
-                <div class="question">TROUVE LE MODÈLE EXACT</div>
+                <div class="question"><?=$questions["questions"]?></div>
+                <?php
+                //foreach de $answer
+                ?>
                 <div class="reponse"></div>
                 <div class="reponse"></div>
                 <div class="reponse"></div>

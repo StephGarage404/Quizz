@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 17, 2024 at 08:45 AM
+-- Generation Time: Jan 17, 2024 at 03:50 PM
 -- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
 -- PHP Version: 8.1.14
 
@@ -40,7 +40,8 @@ CREATE TABLE `answer` (
 
 INSERT INTO `answer` (`id`, `question_id`, `isgood_answer`, `texte`) VALUES
 (1, 1, 1, 'Lamborghini huracan performante'),
-(2, 1, 0, 'Ferrari F430');
+(3, 1, 0, 'Lamborghini aventador'),
+(4, 1, 0, 'Lamborghini diablo');
 
 -- --------------------------------------------------------
 
@@ -50,15 +51,16 @@ INSERT INTO `answer` (`id`, `question_id`, `isgood_answer`, `texte`) VALUES
 
 CREATE TABLE `question` (
   `id` int(11) NOT NULL,
-  `code_image` varchar(255) NOT NULL
+  `code_image` varchar(255) NOT NULL,
+  `questions` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`id`, `code_image`) VALUES
-(1, 'lamborghini_huracan.jpg');
+INSERT INTO `question` (`id`, `code_image`, `questions`) VALUES
+(1, 'lamborghini_huracan.jpg', 'Quel est le modèle du véhicule ?');
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,12 @@ INSERT INTO `user` (`id`, `pseudo`) VALUES
 (12, 'idzhvfr\"'),
 (13, 'lmfbv^phre'),
 (14, 'Jorge'),
-(15, 'hhhhh');
+(15, 'hhhhh'),
+(16, 'ert'),
+(17, 'sdfsf'),
+(18, 'Adam'),
+(19, 'ouioui'),
+(20, 'Stéphane');
 
 -- --------------------------------------------------------
 
@@ -160,13 +167,13 @@ ALTER TABLE `user_question`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `score`
@@ -178,7 +185,7 @@ ALTER TABLE `score`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user_question`

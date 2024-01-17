@@ -1,6 +1,6 @@
 body{
 
-    background-image: url(../images/Background/jake-blucker-OJX7gIU3E6U-unsplash\(1\).jpg);
+    background-image: url(../images/Background/Accueil.jpg);
     background-size: cover;
 }
 
@@ -14,6 +14,12 @@ body{
     width: 489px;
     height: 857px; 
     border-radius: 25px;
+
+  
+    -webkit-box-shadow: 10px 10px 5px rgba(255, 94, 0, 0.6);
+    padding: 5px 5px 5px 15px;
+    width: 300px;
+
 }
 
 .question {
@@ -36,5 +42,19 @@ body{
     border-radius: 25px;
     width: 100%;
     background-color: rgb(76, 76, 76);
+
+    
 }
 
+.TitreQuizz {
+    color: rgba(255, 94, 0, 0.6);
+    text-shadow: 0 0 3px #ffc400, 0 0 5px #f82500, 0 0 8px #f80000;
+}
+
+
+.border_shadow 
+{
+    -webkit-box-shadow: 10px 10px 5px #888;
+    padding: 5px 5px 5px 15px;
+    width: 300px;
+}

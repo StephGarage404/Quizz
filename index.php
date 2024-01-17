@@ -9,40 +9,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/style_index.css">
     <title>QUIZZ</title>
 </head>
     
 <body>
 
-    <button><a href="/quizz_page.php">QUIZZ</a></button>
+            <!-- Titre + FORM Déconnection !-->
+    <section>
+
+           <div class="row d-flex justify-content-between">
+
+                <div class="col"></div>
+
+                <div class="text-white col">
+                    <h1>Quizz Automobile</h1>  
+                </div>
+
+                <div class="col">
+                    <form action="#" method="post">
+                        <button class="p-3 rounded-md bg-violet-700 m-6 grid" type="submit">Deconnecter</button>
+                    </form>
+                </div>
+
+            </div>
 
 
-    <div id="quizz-container">
-        <h1>Quizz Automobile</h1>  
-    </div>
+            <!-- FORMULAIRE PSEUDO ET CONNEXION!-->
+
+            <div class="row formConnexion d-flex align-items-center">
+                <div class="col d-flex justify-content-center">
+
+                    <form action="./process/user_connection.php" method="post">
+
+                    <div class="col placehold">
+                        <input type="text" name="username" id="username" class="m-6 grid grid-cols-1" placeholder="Pseudo"/>
+                    </div>
+                        <div class="col ">
+                            <button class="btn btn-outline-warning connecter" type="submit">Se connecter</button>                 
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            
+            <!-- FIN FORMULAIRE PSEUDO ET CONNEXION!-->
+
+            
+                <div>
+                    <button class="button-87"><a href="/quizz_page.php">QUIZZ</a></button>
+                </div>
     
-    <button type="submit" id="submit-button">Se connecter</button>
-    
-
-    <div id="question-container">
-
-        <img id="car-image" src="./images/Background/Accueil.jpg" alt="Car Image">
-        <p id="question-text"></p>                         
-    </div>
-        
-    <div id="options-container">
-
-        <form action="./process/user_connection.php" method="post">
-
-            <input type="text" name="username" id="username" autocomplete="username"
-                    class="m-6 grid grid-cols-1" placeholder="Pseudo"/>
-
-            <button class="p-3 rounded-md bg-violet-700 m-6 grid" type="submit">envoyer</button>
-
-        </form>
-    </div>  
-                
+    </section>
    
     <script src="app.js"></script>
 
