@@ -1,0 +1,40 @@
+body{
+
+    background-image: url(../images/Background/jake-blucker-OJX7gIU3E6U-unsplash\(1\).jpg);
+    background-size: cover;
+}
+
+
+
+.imageVoiture {
+    
+    margin-top: 30px;
+    background-image: url(../images/Voitures/shelby.jpg);
+    background-size: cover;
+    width: 489px;
+    height: 857px; 
+    border-radius: 25px;
+}
+
+.question {
+
+    margin-top: 100px;
+    height: 60px;
+    width: 100%;
+    background-color:rgba(255, 94, 0, 0.6);
+    border-radius: 25px;
+    text-align: center;
+    font-size: 30px;
+   
+}
+
+
+.reponse {
+
+    margin: 10px;
+    height: 60px;
+    border-radius: 25px;
+    width: 100%;
+    background-color: rgb(76, 76, 76);
+}
+
