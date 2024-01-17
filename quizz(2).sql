@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 16, 2024 at 02:47 PM
+-- Generation Time: Jan 17, 2024 at 08:45 AM
 -- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
 -- PHP Version: 8.1.14
 
@@ -80,8 +80,28 @@ CREATE TABLE `score` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `pseudo` int(30) NOT NULL
+  `pseudo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `pseudo`) VALUES
+(1, 'kydiy'),
+(2, 'lucas'),
+(3, 'luluklyfic'),
+(4, 'jdkuy'),
+(6, 'Jean '),
+(7, ',hcic'),
+(8, 'hjciyd'),
+(9, 'fegrdx'),
+(10, 'fdhtj'),
+(11, 'lkzherg'),
+(12, 'idzhvfr\"'),
+(13, 'lmfbv^phre'),
+(14, 'Jorge'),
+(15, 'hhhhh');
 
 -- --------------------------------------------------------
 
@@ -158,7 +178,7 @@ ALTER TABLE `score`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_question`
